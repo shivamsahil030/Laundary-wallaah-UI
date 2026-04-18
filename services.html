@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services</title>
+  <link rel="stylesheet" href="services.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <h1>Luna<span>dary</span> Wallaah</h1>
+          <span class="tagline"> Fresh Clothes, Zero Hassle</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="http://127.0.0.1:5500/Laundary-Wallaah/index.html#about">About</a></li>
+          <li><a href="http://127.0.0.1:5500/Laundary-Wallaah/index.html#pricing">Pricing</a></li>
+          <li><a href="http://127.0.0.1:5500/Laundary-Wallaah/index.html#contact">Contact</a></li>
+
+        </ul>
+        <a href="/Laundary-Wallaah/launadary-auth.html" id="username">Username</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="services-title">Our Services</h2>
+        <p class="services-subtitles">Discover Our Expert Laundary Services..</p>
+
+
+
+        <div class="services-area" id="servicesArea"></div>
+
+        <div class="sticky-bar">
+          <div class="total-row">
+            <span class="total-label">Total:</span>
+            <span class="total-amount" id="totalDisplay">₹0</span>
+          </div>
+          <button class="done-btn" onclick="handleDone()">Done</button>
+        </div>
+
+        <script>
+          const SERVICES = [
+            {
+              category: "Basic Services", items: [
+                { id: "washing", name: "Washing", desc: "Deep cleaning to remove dirt, sweat, and everyday stains.", clothes: [{ name: "Shirt", price: 10 }, { name: "Pant", price: 15 }, { name: "T-Shirt", price: 8 }, { name: "Kurta", price: 12 }] },
+                { id: "dryclean", name: "Dry Cleaning", desc: "Gentle care for delicate and premium fabrics.", clothes: [{ name: "Suit", price: 80 }, { name: "Saree", price: 60 }, { name: "Blazer", price: 70 }, { name: "Dress", price: 50 }] },
+                { id: "ironing", name: "Ironing / Pressing", desc: "Perfectly pressed clothes for a crisp, neat look.", clothes: [{ name: "Shirt", price: 5 }, { name: "Pant", price: 6 }, { name: "Saree", price: 10 }, { name: "Kurta", price: 7 }] },
+                { id: "folding", name: "Folding", desc: "Neatly folded clothes for easy storage and use.", clothes: [{ name: "Shirt", price: 3 }, { name: "Pant", price: 3 }, { name: "Bedsheet", price: 5 }, { name: "Towel", price: 2 }] },
+                { id: "stain", name: "Stain Removal", desc: "Targeted treatment to remove tough and stubborn stains.", clothes: [{ name: "Shirt", price: 20 }, { name: "Pant", price: 25 }, { name: "Dress", price: 30 }, { name: "Carpet patch", price: 40 }] }
+              ]
+            },
+            {
+              category: "Advanced Services", items: [
+                { id: "steam", name: "Steam Iron", desc: "Wrinkle-free finish using advanced steam technology.", clothes: [{ name: "Shirt", price: 8 }, { name: "Saree", price: 15 }, { name: "Suit", price: 20 }, { name: "Curtain", price: 25 }] },
+                { id: "premium", name: "Premium Fabric Care", desc: "Special handling for silk, wool, and designer wear.", clothes: [{ name: "Silk saree", price: 100 }, { name: "Wool coat", price: 120 }, { name: "Designer dress", price: 150 }, { name: "Cashmere", price: 130 }] },
+                { id: "express", name: "Express Service", desc: "Quick turnaround for same-day or urgent needs.", clothes: [{ name: "Shirt", price: 20 }, { name: "Pant", price: 25 }, { name: "Suit", price: 60 }, { name: "Dress", price: 40 }] },
+                { id: "bulk", name: "Bulk Washing", desc: "Efficient cleaning for bedsheets, curtains, and more.", clothes: [{ name: "Bedsheet", price: 30 }, { name: "Curtain", price: 40 }, { name: "Blanket", price: 50 }, { name: "Pillow cover", price: 10 }] },
+                { id: "delicate", name: "Delicate Wash", desc: "Extra gentle wash cycle for sensitive fabrics.", clothes: [{ name: "Lingerie", price: 15 }, { name: "Baby clothes", price: 12 }, { name: "Lace items", price: 20 }, { name: "Chiffon", price: 18 }] }
+              ]
+            },
+            {
+              category: "Special Services", items: [
+                { id: "shoe", name: "Shoe Cleaning", desc: "Restore freshness and shine to your footwear.", clothes: [{ name: "Sports shoes", price: 80 }, { name: "Leather shoes", price: 100 }, { name: "Sandals", price: 50 }, { name: "Boots", price: 120 }] },
+                { id: "bag", name: "Bag Cleaning", desc: "Careful cleaning to maintain quality and durability.", clothes: [{ name: "Handbag", price: 120 }, { name: "Backpack", price: 80 }, { name: "Leather bag", price: 150 }, { name: "Tote bag", price: 60 }] },
+                { id: "curtain", name: "Curtain Cleaning", desc: "Dust and allergen-free curtains for a fresh home.", clothes: [{ name: "Small curtain", price: 60 }, { name: "Large curtain", price: 100 }, { name: "Blackout curtain", price: 120 }, { name: "Sheer curtain", price: 70 }] },
+                { id: "carpet", name: "Carpet Cleaning", desc: "Deep cleaning to remove dirt and odors.", clothes: [{ name: "Small rug", price: 150 }, { name: "Medium carpet", price: 250 }, { name: "Large carpet", price: 400 }, { name: "Doormat", price: 50 }] },
+                { id: "blanket", name: "Blanket & Quilt Cleaning", desc: "Thorough wash for heavy and seasonal items.", clothes: [{ name: "Single blanket", price: 80 }, { name: "Double blanket", price: 120 }, { name: "Quilt", price: 140 }, { name: "Comforter", price: 160 }] }
+              ]
+            }
+          ];
+
+          const QUICK_TAGS = ["Jacket", "Hoodie", "Lehenga", "Sherwani", "Tracksuit", "Uniform", "Lab coat", "Jeans", "Dupatta", "Waistcoat", "Sports kit", "Baby quilt", "Raincoat", "Abaya", "Jumpsuit"];
+
+          const quantities = {};
+
+          function getTotal() {
+            let t = 0;
+            for (const [k, q] of Object.entries(quantities)) {
+              const [sid, ci] = k.split("_");
+              const svc = SERVICES.flatMap(s => s.items).find(i => i.id === sid);
+              if (svc) t += svc.clothes[parseInt(ci)].price * q;
+            }
+            return t;
+          }
+
+          function updateTotal() {
+            document.getElementById("totalDisplay").textContent = "₹" + getTotal();
+          }
+
+          function changeQty(sid, ci, delta) {
+            const k = sid + "_" + ci;
+            quantities[k] = Math.max(0, (quantities[k] || 0) + delta);
+            document.getElementById("qty_" + k).textContent = quantities[k];
+            updateTotal();
+          }
+
+          function toggleService(sid) {
+            const panel = document.getElementById("panel_" + sid);
+            const btn = document.getElementById("btn_" + sid);
+            const isOpen = panel.classList.contains("open");
+            if (isOpen) { panel.classList.remove("open"); btn.textContent = "+"; btn.className = "toggle-btn plus"; }
+            else { panel.classList.add("open"); btn.textContent = "−"; btn.className = "toggle-btn minus"; }
+          }
+
+          function toggleOther() {
+            const panel = document.getElementById("other-panel");
+            const btn = document.getElementById("other-btn");
+            const isOpen = panel.classList.contains("open");
+            if (isOpen) { panel.classList.remove("open"); btn.textContent = "+"; btn.className = "toggle-btn plus"; }
+            else { panel.classList.add("open"); btn.textContent = "−"; btn.className = "toggle-btn minus"; }
+          }
+
+          function toggleTag(el, tag) {
+            el.classList.toggle("selected");
+            syncTagsToTextarea();
+          }
+
+          function syncTagsToTextarea() {
+            const selected = [...document.querySelectorAll(".cloth-tag.selected")].map(t => t.dataset.tag);
+            const ta = document.getElementById("custom-textarea");
+            const existing = ta.value.trim();
+            const prevTags = ta.dataset.prevTags ? ta.dataset.prevTags.split(",").filter(Boolean) : [];
+            let text = existing;
+            prevTags.forEach(t => { text = text.replace(t + ", ", "").replace(", " + t, "").replace(t, ""); });
+            text = text.trim();
+            const tagStr = selected.join(", ");
+            ta.value = tagStr ? (text ? (tagStr + ", " + text) : tagStr) : text;
+            ta.dataset.prevTags = selected.join(",");
+            updateCharCount();
+          }
+
+          function updateCharCount() {
+            const ta = document.getElementById("custom-textarea");
+            document.getElementById("char-count").textContent = ta.value.length + "/500 characters";
+          }
+
+          function handleDone() {
+            const total = getTotal();
+            const customNote = document.getElementById("custom-textarea")?.value?.trim();
+            if (total === 0 && !customNote) {
+              alert("Please select at least one service or describe your custom request!");
+              return;
+            }
+            let msg = "Order placed!\n\nTotal: ₹" + total;
+            if (customNote) msg += "\n\nCustom Request:\n" + customNote;
+            msg += "\n\nThank you for choosing Lunadary Wallaah!";
+            alert(msg);
+          }
+
+          function render() {
+            const area = document.getElementById("servicesArea");
+            area.innerHTML = "";
+
+            SERVICES.forEach(section => {
+              const label = document.createElement("div");
+              label.className = "section-label";
+              label.textContent = section.category;
+              area.appendChild(label);
+
+              section.items.forEach(svc => {
+                const card = document.createElement("div");
+                card.className = "service-card";
+                card.innerHTML = `
+        <div class="service-header" onclick="toggleService('${svc.id}')">
+          <div>
+            <div class="service-title">${svc.name}</div>
+            <div class="service-desc-inline">${svc.desc}</div>
+          </div>
+          <button id="btn_${svc.id}" class="toggle-btn plus" onclick="event.stopPropagation();toggleService('${svc.id}')">+</button>
+        </div>
+        <div class="clothes-panel" id="panel_${svc.id}">
+          ${svc.clothes.map((c, i) => `
+            <div class="clothes-row">
+              <div>
+                <div class="clothes-name">${c.name}</div>
+                <div class="clothes-price">₹${c.price} per piece</div>
+              </div>
+              <div class="qty-ctrl">
+                <button class="qty-btn" onclick="changeQty('${svc.id}',${i},-1)">−</button>
+                <span class="qty-num" id="qty_${svc.id}_${i}">0</span>
+                <button class="qty-btn" onclick="changeQty('${svc.id}',${i},1)">+</button>
+              </div>
+            </div>`).join("")}
+        </div>`;
+                area.appendChild(card);
+              });
+            });
+
+            // Other / Custom section
+            const otherLabel = document.createElement("div");
+            otherLabel.className = "section-label";
+            otherLabel.textContent = "Other";
+            area.appendChild(otherLabel);
+
+            const otherCard = document.createElement("div");
+            otherCard.className = "other-card";
+            otherCard.innerHTML = `
+    <div class="other-header" onclick="toggleOther()">
+      <div>
+        <div class="service-title" style="color:#185FA5;">Other / Custom Request</div>
+        <div class="service-desc-inline" style="color:#378ADD;">Describe clothes or services not listed above</div>
+      </div>
+      <button id="other-btn" class="toggle-btn plus" onclick="event.stopPropagation();toggleOther()">+</button>
+    </div>
+    <div class="other-panel" id="other-panel">
+      <div class="tag-hint">Quick select — tap to add to your note:</div>
+      <div class="cloth-tags">
+        ${QUICK_TAGS.map(t => `<span class="cloth-tag" data-tag="${t}" onclick="toggleTag(this,'${t}')">${t}</span>`).join("")}
+      </div>
+      <textarea id="custom-textarea" maxlength="500"
+        placeholder="e.g. I have a vintage leather jacket, 2 school uniforms, and a handmade silk dupatta that need gentle cleaning. Please advise on pricing."
+        oninput="updateCharCount()"></textarea>
+      <div class="char-hint" id="char-count">0/500 characters</div>
+    </div>`;
+            area.appendChild(otherCard);
+          }
+
+          render();
+        </script>
+</body>
+
+</html>

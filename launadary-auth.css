@@ -1,0 +1,536 @@
+/* ============================================
+   Lunadary Wallaah Services — Auth Styles
+   ============================================ */
+
+/* ── CSS Variables ── */
+:root {
+  --primary: #0A57A2;
+  --secondary: #c0eaf8;
+  --primary-dark: #073d75;
+  --primary-lt: #3a7fc1;
+  --ink: #04111f;
+  --cream: #f0f7ff;
+  --deep: #051929;
+  --muted: #6a8faf;
+  --err: #d64a4a;
+  --radius: 14px;
+  --t: 0.35s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--deep);
+  color: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Decorative Background ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(10, 87, 162, .30) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 90%, rgba(192, 234, 248, .12) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, #051929 30%, #02111f 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Floating Orbs ── */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  animation: drift 12s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(10, 87, 162, .22);
+  top: -120px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 320px;
+  height: 320px;
+  background: rgba(192, 234, 248, .12);
+  bottom: -100px;
+  right: -80px;
+  animation-delay: -6s;
+}
+
+.orb-3 {
+  width: 200px;
+  height: 200px;
+  background: rgba(58, 127, 193, .14);
+  top: 50%;
+  left: 60%;
+  animation-delay: -3s;
+}
+
+@keyframes drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(30px, 20px) scale(1.08);
+  }
+}
+
+/* ── Card Wrapper ── */
+.card-wrap {
+  position: relative;
+  z-index: 1;
+  width: min(480px, 96vw);
+  animation: fadeUp .7s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Card ── */
+.card {
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid rgba(10, 87, 162, .35);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-radius: 24px;
+  padding: 48px 44px 44px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .07);
+}
+
+/* ── Brand / Logo ── */
+.brand {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.brand-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 14px;
+  border-radius: 18px;
+  background: linear-gradient(145deg, var(--primary-lt) 0%, var(--primary-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 28px rgba(10, 87, 162, .55), inset 0 1px 0 rgba(255, 255, 255, .15);
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, .18), transparent 60%);
+}
+
+.brand h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--cream);
+}
+
+.brand h1 span {
+  color: var(--secondary);
+  font-style: italic;
+}
+
+.brand p {
+  font-size: .82rem;
+  color: var(--muted);
+  margin-top: 4px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  background: rgba(255, 255, 255, .05);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 32px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 9px 0;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .88rem;
+  font-weight: 500;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background var(--t), color var(--t);
+  letter-spacing: .03em;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--cream);
+  box-shadow: 0 3px 12px rgba(10, 87, 162, .5);
+}
+
+/* ── Form Panels ── */
+.form-panel {
+  display: none;
+}
+
+.form-panel.active {
+  display: block;
+  animation: fadeIn .35s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Form Groups ── */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--secondary);
+  margin-bottom: 7px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+/* ── Input Wrapper ── */
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap .icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: var(--muted);
+  pointer-events: none;
+  transition: color var(--t);
+}
+
+.input-wrap input {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: var(--radius);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .92rem;
+  outline: none;
+  transition: border-color var(--t), background var(--t), box-shadow var(--t);
+}
+
+.input-wrap input::placeholder {
+  color: rgba(255, 255, 255, .22);
+}
+
+.input-wrap input:focus {
+  border-color: var(--primary-lt);
+  background: rgba(10, 87, 162, .12);
+  box-shadow: 0 0 0 3px rgba(10, 87, 162, .20);
+}
+
+.input-wrap input:focus+.icon,
+.input-wrap input:focus~.icon {
+  color: var(--secondary);
+}
+
+.input-wrap input {
+  order: 2;
+}
+
+.input-wrap .icon {
+  order: 1;
+}
+
+/* ── Password Toggle ── */
+.toggle-pw {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  transition: color var(--t);
+}
+
+.toggle-pw:hover {
+  color: var(--secondary);
+}
+
+/* ── Two-column Row ── */
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── Remember / Forgot Row ── */
+.form-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  font-size: .8rem;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .05);
+  cursor: pointer;
+  position: relative;
+  transition: background var(--t), border-color var(--t);
+}
+
+.remember input[type=checkbox]:checked {
+  background: var(--primary-lt);
+  border-color: var(--primary-lt);
+}
+
+.remember input[type=checkbox]:checked::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.forgot {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color var(--t);
+}
+
+.forgot:hover {
+  color: var(--cream);
+}
+
+/* ── Primary Button ── */
+.btn-primary {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, var(--primary-lt) 0%, var(--primary-dark) 100%);
+  border: none;
+  border-radius: var(--radius);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: .04em;
+  box-shadow: 0 6px 22px rgba(10, 87, 162, .40);
+  transition: transform .18s, box-shadow .18s, opacity .18s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .18) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(10, 87, 162, .55);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  opacity: .9;
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  color: var(--muted);
+  font-size: .76rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, .1);
+}
+
+/* ── Social Buttons ── */
+.social-row {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-social {
+  flex: 1;
+  padding: 10px 8px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: var(--radius);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .82rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: background var(--t), border-color var(--t);
+}
+
+.btn-social:hover {
+  background: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .2);
+}
+
+.btn-social img {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Terms Note ── */
+.terms-note {
+  font-size: .74rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 18px;
+  line-height: 1.5;
+}
+
+.terms-note a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.terms-note a:hover {
+  text-decoration: underline;
+}
+
+/* ── Password Strength Bar ── */
+.strength-bar {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.strength-seg {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, .1);
+  transition: background .3s;
+}
+
+.strength-seg.weak {
+  background: #d64a4a;
+}
+
+.strength-seg.fair {
+  background: #e8a03a;
+}
+
+.strength-seg.good {
+  background: var(--primary-lt);
+}
+
+.strength-seg.strong {
+  background: #4caf7d;
+}
+
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .card {
+    padding: 36px 24px 32px;
+  }
+
+  .row-2 {
+    grid-template-columns: 1fr;
+  }
+}

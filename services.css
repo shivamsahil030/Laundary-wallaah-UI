@@ -1,0 +1,372 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-background-color: #0A57A2;
+    --secondary-background-color: #c0eaf8;
+    --heading-font: 'Poppins', 'sans-serif';
+    --section-font: 'Montserrat', 'sans-serif';
+    --paragraph-font: 'Inter', 'sans-serif'
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+
+}
+
+/* harder-section */
+
+.header {
+    background-color: var(--primary-background-color);
+    color: white;
+    padding: 1rem 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    position: sticky;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: var(--cream);
+}
+
+.logo h1 span {
+    color: var(--secondary);
+    font-style: italic;
+}
+
+
+.logo tagline {
+    font-size: 0.9rem;
+    opacity: 0.8;
+
+
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+#username {
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#username:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+
+}
+
+/* services-section */
+
+
+
+
+.services-area {
+    padding: 12px 24px 100px;
+}
+
+.section-label {
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #333;
+    margin: 16px 0 8px;
+}
+
+.service-card {
+    background: #f5f5f5;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.service-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    cursor: pointer;
+}
+
+.service-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+}
+
+.service-desc-inline {
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+}
+
+.toggle-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.toggle-btn.plus {
+    background: #1a7fd4;
+    color: #fff;
+}
+
+.toggle-btn.minus {
+    background: #1a7fd4;
+    color: #fff;
+}
+
+.clothes-panel {
+    display: none;
+    padding: 0 16px 14px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.clothes-panel.open {
+    display: block;
+}
+
+.clothes-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 0.5px solid #e8e8e8;
+}
+
+.clothes-row:last-child {
+    border-bottom: none;
+}
+
+.clothes-name {
+    font-size: 13px;
+    color: #333;
+}
+
+.clothes-price {
+    font-size: 12px;
+    color: #666;
+}
+
+.qty-ctrl {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 5px;
+    border: 1.5px solid #1a7fd4;
+    background: #fff;
+    color: #1a7fd4;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qty-btn:hover {
+    background: #e8f0fb;
+}
+
+.qty-num {
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 18px;
+    text-align: center;
+    color: #111;
+}
+
+.other-card {
+    background: #f0f6ff;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1.5px dashed #1a7fd4;
+    overflow: hidden;
+}
+
+.other-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    cursor: pointer;
+}
+
+.other-panel {
+    display: none;
+    padding: 0 16px 16px;
+    border-top: 1px solid #c8ddf5;
+}
+
+.other-panel.open {
+    display: block;
+}
+
+.other-panel textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1.5px solid #c8ddf5;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #222;
+    background: #fff;
+    resize: vertical;
+    outline: none;
+    font-family: Arial, sans-serif;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+.other-panel textarea:focus {
+    border-color: #1a7fd4;
+}
+
+.other-panel textarea::placeholder {
+    color: #aaa;
+}
+
+.char-hint {
+    font-size: 11px;
+    color: #888;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.cloth-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.cloth-tag {
+    background: #e8f0fb;
+    color: #185FA5;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid #b5d4f4;
+    transition: background 0.15s;
+}
+
+.cloth-tag:hover {
+    background: #b5d4f4;
+}
+
+.cloth-tag.selected {
+    background: #1a7fd4;
+    color: #fff;
+    border-color: #1a7fd4;
+}
+
+.tag-hint {
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 12px 24px 16px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.total-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+}
+
+.total-amount {
+    font-size: 17px;
+    font-weight: 700;
+    color: #111;
+}
+
+.done-btn {
+    width: 100%;
+    background: #2db02d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 13px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.done-btn:hover {
+    background: #249e24;
+}
